@@ -1,0 +1,31 @@
+@import "styleguide/_colors";
+
+.Form {
+  &__input {
+    @extend .color-parchment;
+    @extend .font-inter;
+    line-height: 100%;
+    font-size: 16px;
+
+    padding: 0 0.5rem;
+    height: 3rem;
+    border: 2px solid color("black");
+    border-radius: 0.5rem;
+
+    &--small {
+      @extend .Form__input;
+      font-size: 14px;
+      height: 2.5rem;
+      border: 2px solid color("black");
+    }
+  }
+
+  &__radio {
+    span {
+      @extend .color-navy;
+      @extend .font-inter;
+      @extend .overflow-ellipsis;
+      padding-left: 0.25rem;
+    }
+  }
+}

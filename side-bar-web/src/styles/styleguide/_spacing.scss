@@ -1,0 +1,176 @@
+@use "sass:map-get";
+@use "sass:map-merge";
+@import "./_sizing.scss";
+
+$spacing-units: (
+  0.25rem,
+  0.5rem,
+  0.75rem,
+  1rem,
+  1.25rem,
+  1.5rem,
+  2rem,
+  2.5rem,
+  3rem,
+  4rem,
+  6rem,
+  8rem
+);
+
+@function str-replace($string, $value, $replacement: "") {
+  $index: str-index($string, $value);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replacement +
+      str-replace(
+        str-slice($string, $index + str-length($value)),
+        $value,
+        $replacement
+      );
+  }
+
+  @return $string;
+}
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+$decimal_deliminator: "_";
+@function format-unit($unit) {
+  @if type-of($unit) == number {
+    @return str-replace(
+      str-replace("#{strip-units($unit)}", "0.", $decimal_deliminator),
+      ".",
+      $decimal_deliminator
+    );
+  } @else {
+    @return $unit;
+  }
+}
+
+@each $unit in $spacing-units {
+  // margins
+  .m#{format_unit($unit)} {
+    margin: #{$unit};
+  }
+  .my#{format_unit($unit)} {
+    margin-top: #{$unit};
+    margin-bottom: #{$unit};
+  }
+  .mx#{format_unit($unit)} {
+    margin-left: #{$unit};
+    margin-right: #{$unit};
+  }
+  .mt#{format_unit($unit)} {
+    margin-top: #{$unit};
+  }
+  .mb#{format_unit($unit)} {
+    margin-bottom: #{$unit};
+  }
+  .ml#{format_unit($unit)} {
+    margin-left: #{$unit};
+  }
+  .mr#{format_unit($unit)} {
+    margin-right: #{$unit};
+  }
+  //padding
+  .p#{format_unit($unit)} {
+    padding: #{$unit};
+  }
+  .py#{format_unit($unit)} {
+    padding-top: #{$unit};
+    padding-bottom: #{$unit};
+  }
+  .px#{format_unit($unit)} {
+    padding-left: #{$unit};
+    padding-right: #{$unit};
+  }
+  .pt#{format_unit($unit)} {
+    padding-top: #{$unit};
+  }
+  .pb#{format_unit($unit)} {
+    padding-bottom: #{$unit};
+  }
+  .pl#{format_unit($unit)} {
+    padding-left: #{$unit};
+  }
+  .pr#{format_unit($unit)} {
+    padding-right: #{$unit};
+  }
+
+  @media (min-width: map-get($breakpoints, "md")) {
+    // md:margins
+    .md\:m#{format_unit($unit)} {
+      margin: #{$unit};
+    }
+    .md\:my#{format_unit($unit)} {
+      margin-top: #{$unit};
+      margin-bottom: #{$unit};
+    }
+    .md\:mx#{format_unit($unit)} {
+      margin-left: #{$unit};
+      margin-right: #{$unit};
+    }
+    .md\:mt#{format_unit($unit)} {
+      margin-top: #{$unit};
+    }
+    .md\:mb#{format_unit($unit)} {
+      margin-bottom: #{$unit};
+    }
+    .md\:ml#{format_unit($unit)} {
+      margin-left: #{$unit};
+    }
+    .md\:mr#{format_unit($unit)} {
+      margin-right: #{$unit};
+    }
+    // md:padding
+    .md\:p#{format_unit($unit)} {
+      padding: #{$unit};
+    }
+    .md\:py#{format_unit($unit)} {
+      padding-top: #{$unit};
+      padding-bottom: #{$unit};
+    }
+    .md\:px#{format_unit($unit)} {
+      padding-left: #{$unit};
+      padding-right: #{$unit};
+    }
+    .md\:pt#{format_unit($unit)} {
+      padding-top: #{$unit};
+    }
+    .md\:pb#{format_unit($unit)} {
+      padding-bottom: #{$unit};
+    }
+    .md\:pl#{format_unit($unit)} {
+      padding-left: #{$unit};
+    }
+    .md\:pr#{format_unit($unit)} {
+      padding-right: #{$unit};
+    }
+  }
+}
+
+.md\:mt0 {
+  @media (min-width: map-get($breakpoints, "md")) {
+    margin-top: 0;
+  }
+}
+.md\:mb0 {
+  @media (min-width: map-get($breakpoints, "md")) {
+    margin-bottom: 0;
+  }
+}
+.md\:ml0 {
+  @media (min-width: map-get($breakpoints, "md")) {
+    margin-left: 0;
+  }
+}
+.md\:mr0 {
+  @media (min-width: map-get($breakpoints, "md")) {
+    margin-right: 0;
+  }
+}
+
+.myauto {
+  margin-top: auto;
+  margin-bottom: auto;
+}

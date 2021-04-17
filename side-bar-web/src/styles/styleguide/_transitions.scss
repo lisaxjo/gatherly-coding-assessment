@@ -1,0 +1,14 @@
+@use "sass:map-get";
+
+$durations: (
+  short: 0.125s,
+  medium: 0.3s,
+  long: 0.5s,
+  extra-long: 1.25s,
+);
+
+$transition-easing: ease-in-out;
+$transition-short: map-get($durations, "short") $transition-easing;
+$transition-medium: map-get($durations, "medium") $transition-easing;
+$transition-long: map-get($durations, "long") $transition-easing;
+$transition-extra-long: duration("extra-long") $transition-easing;

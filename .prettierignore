@@ -1,0 +1,10 @@
+# Ignore artifacts:
+dist/
+public/
+node_modules/
+.gitignore
+babel.config.js
+package.json
+package-lock.json
+README.md
+build/

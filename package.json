@@ -1,0 +1,30 @@
+{
+  "name": "side-bar-api",
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
+  "description": "A place for sporadic conversation",
+  "main": "index.js",
+  "scripts": {
+    "resetdb": "node resetDb.js",
+    "db": "node database.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write --ignore-unknown ./*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.818.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.95.4",
+    "prettier": "^2.2.1",
+    "shelljs": "^0.8.4",
+    "sqlite3": "^5.0.2",
+    "uuid": "^8.3.2"
+  }
+}

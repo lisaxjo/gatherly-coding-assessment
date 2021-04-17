@@ -1,0 +1,33 @@
+$colors: (
+  "white": #ffffff,
+  "black": #242728,
+  "coal": #3a3933,
+  "parchment": #ece9de,
+  "navy": #04194f,
+  "tennis": #d8e478,
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@each $name, $value in $colors {
+  .color-#{$name} {
+    color: $value;
+  }
+  .border-color-#{$name} {
+    border-color: $value;
+  }
+  .bg-color-#{$name} {
+    background-color: $value;
+  }
+  .hover\:color-#{$name}:hover {
+    color: $value;
+  }
+  .hover\:border-color-#{$name}:hover {
+    border-color: $value;
+  }
+  .hover\:bg-color-#{$name}:hover {
+    background-color: $value;
+  }
+}

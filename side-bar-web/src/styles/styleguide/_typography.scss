@@ -1,0 +1,113 @@
+@use "sass:map-get";
+
+/*
+  Vollkorn (title serif)
+  https://fonts.google.com/specimen/Vollkorn?query=vollk&sidebar.open=true&selection.family=Vollkorn:ital,wght@0,500;1,500
+*/
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,500;1,500&display=fallback");
+
+/*
+  Inter (body sans-serif)
+*/
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/fonts/Inter-Regular.woff2") format("woff2"),
+    url("../../assets/fonts/Inter-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/fonts/Inter-SemiBold.woff2") format("woff2"),
+    url("../../assets/fonts/Inter-SemiBold.woff") format("woff");
+  font-weight: 500;
+  font-style: bold;
+}
+
+.font-vollkorn {
+  font-family: "Vollkorn", Arial, Helvetica, sans-serif;
+}
+.font-inter {
+  font-family: "Inter", serif;
+  font-weight: 400;
+}
+.font-inter-bold {
+  font-family: "Inter", serif;
+  font-weight: 500;
+}
+
+$font-sizes: (
+  "title": 56px,
+  "subtitle": 48px,
+  "heading": 32px,
+  "subheading": 24px,
+  "body": 18px,
+  "small": 16px,
+  "tiny": 14px,
+);
+
+.title {
+  font-size: map-get($font-sizes, "title");
+  line-height: 120%;
+}
+.subtitle {
+  font-size: map-get($font-sizes, "subtitle");
+  line-height: 120%;
+}
+.heading {
+  font-size: map-get($font-sizes, "heading");
+  line-height: 120%;
+}
+.subheading {
+  font-size: map-get($font-sizes, "subheading");
+  line-height: 120%;
+}
+.body {
+  font-size: map-get($font-sizes, "body");
+  line-height: 140%;
+}
+.small {
+  font-size: map-get($font-sizes, "small");
+  line-height: 140%;
+}
+.tiny {
+  font-size: map-get($font-sizes, "tiny");
+  line-height: 140%;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
+}
+
+.overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inherit-visited {
+  &:visited {
+    color: inherit;
+  }
+}

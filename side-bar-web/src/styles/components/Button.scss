@@ -1,0 +1,84 @@
+@import "styleguide/_colors";
+@import "styleguide/_transitions";
+@import "styleguide/_typography";
+
+.Button {
+  &--primary {
+    @extend .font-inter-bold;
+    font-size: map-get($font-sizes, "subheading");
+    line-height: 100%;
+    cursor: pointer;
+    color: color("parchment");
+    background: color("tennis");
+    transition: color $transition-short, background-color $transition-short;
+    height: 4rem;
+    border: 0px solid color("tennis");
+    border-radius: 0.5rem;
+    padding: 0 2rem;
+  }
+
+  &--secondary {
+    @extend .font-inter-bold;
+    cursor: pointer;
+    color: color("navy");
+    background: color("tennis");
+    transition: color $transition-short, background-color $transition-short;
+    height: 3rem;
+    border: 2px solid color("tennis");
+    border-radius: 0.5rem;
+    padding: 0 2rem;
+  }
+
+  &--tertiary {
+    cursor: pointer;
+    @extend .color-coal;
+    @extend .bg-color-parchment;
+    @extend .font-inter-bold;
+    transition: background-color $transition-short;
+    height: 3rem;
+    border-radius: 0.5rem;
+    padding: 0 1.5rem;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &--hollow {
+    @extend .color-navy;
+    @extend .font-inter-bold;
+    font-size: map-get($font-sizes, "body");
+    text-decoration: none;
+    line-height: 100%;
+    font-size: 16px;
+    background: none;
+
+    height: 2.5rem;
+    border: 2px solid color("navy");
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+
+    transition: opacity $transition-short, color $transition-short,
+      background-color $transition-short;
+
+    &:hover {
+      cursor: pointer;
+      color: color("navy");
+      background: color("parchment");
+    }
+
+    &:disabled {
+      cursor: initial;
+      background: color("parchment");
+      color: color("navy");
+      opacity: 0.25;
+    }
+  }
+
+  &--link {
+    background: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,23 @@
+.ChatCard {
+  @extend .border-rounded-1;
+  @extend .p2;
+  @extend .overflow-hidden;
+  height: 21rem;
+
+  &__label {
+    bottom: -3rem;
+    right: 1rem;
+    z-index: 3;
+  }
+
+  &__video {
+    height: 100%;
+    min-width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  &__grid {
+    width: 65rem;
+  }
+}

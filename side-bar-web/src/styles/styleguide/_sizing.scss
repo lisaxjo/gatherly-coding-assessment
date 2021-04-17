@@ -1,0 +1,14 @@
+$form-field-height: 56px;
+
+$breakpoints: (
+  "xs": 365px,
+  // iphone SE (320px)
+  "sm": 500px,
+  // iphone X (375px) and phablets
+  "md": 770px,
+  // ipad and smaller browser window
+  "lg": 1024px,
+  // laptop
+  "xl": 1450px,
+  // large desktop
+);
