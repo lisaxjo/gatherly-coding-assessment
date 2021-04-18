@@ -7,7 +7,7 @@ class SidebarApi {
     console.log("Connecting to video chat provider... SUCCESS");
   }
 
-  getChats = (request, response) => {
+  getChats (request, response) {
     DatabaseQuery.queryChats(
       (chats) => {
         const data = {
@@ -21,7 +21,7 @@ class SidebarApi {
     );
   };
 
-  createChat = async (request, response) => {
+  async createChat (request, response){
     console.log("createChat::INIT", JSON.stringify(request.body));
     DatabaseQuery.newChat(
       (chatId) => {
@@ -62,7 +62,7 @@ class SidebarApi {
     );
   };
 
-  joinChat = (request, response) => {
+  joinChat (request, response) {
     console.log("joinChat::INIT", JSON.stringify(request.params));
     const { chatId, attendeeId } = request.params;
 
@@ -89,17 +89,20 @@ class SidebarApi {
             );
           },
           (error) => {
-            this._handleError("joinChat::_queryAttendeeById", response, error);
+            console.log('error', error)
+            //this._handleError("joinChat::_queryAttendeeById", response, error);
           }
         );
       },
       (error) => {
-        this._handleError("joinChat::_queryChatById", response, error);
+        console.log('error', error)
+
+        // this._handleError("joinChat::_queryChatById", response, error);
       }
     );
   };
 
-  joinChatAsNewAttendee = (request, response) => {
+  joinChatAsNewAttendee (request, response) {
     console.log(
       "joinChatAsNewAttendee::INIT",
       request.params,
@@ -163,7 +166,7 @@ class SidebarApi {
     );
   };
 
-  leaveChat = (request, response) => {
+  leaveChat (request, response) {
     console.log("leaveChat::INIT", JSON.stringify(request.params));
     const { chatId, attendeeId } = request.params;
     if (!chatId || !attendeeId) {
@@ -195,7 +198,7 @@ class SidebarApi {
     );
   };
 
-  _handleDeleteChat = async (chatId, chimeMeetingId, response) => {
+  async _handleDeleteChat (chatId, chimeMeetingId, response) {
     try {
       await this.awsChime.deleteMeeting(chimeMeetingId);
     } catch (error) {
@@ -218,7 +221,7 @@ class SidebarApi {
     );
   };
 
-  _handleDeleteAttendee = (chatId, attendeeId, chimeMeetingId, response) => {
+  _handleDeleteAttendee (chatId, attendeeId, chimeMeetingId, response) {
     DatabaseQuery.queryAttendeesByChatId(
       chatId,
       async (attendees) => {
@@ -270,12 +273,12 @@ class SidebarApi {
     );
   };
 
-  _handleJoinChatResponse = async (
+  async _handleJoinChatResponse  (
     chat,
     attendeeId,
     chimeAttendeeId,
     response
-  ) => {
+  ) {
     const meetingResponse = await this.awsChime.fetchOrCreateMeeting(
       chat.chime_meeting_id,
       chat.id
@@ -337,12 +340,12 @@ class SidebarApi {
   };
 
   // private
-  _handleError = (tag = "", response, error) => {
+  _handleError  (tag = "", response, error) {
     console.error(`ERROR: (${tag})`, error.toString());
     response.status(500).json("Server Error.");
   };
 
-  _makeListMap = (arr, primaryKey) => {
+  _makeListMap  (arr, primaryKey) {
     return arr.reduce((map, item) => {
       if (item && item.hasOwnProperty(primaryKey)) {
         map[item[primaryKey]] = item;

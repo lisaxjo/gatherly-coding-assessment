@@ -7,24 +7,41 @@
   "description": "A place for sporadic conversation",
   "main": "index.js",
   "scripts": {
+    "build_babel": "babel src -d lib",
     "resetdb": "node resetDb.js",
     "db": "node database.js",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write --ignore-unknown ./*"
   },
+  "parser": "babel-eslint",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.818.0",
+    "babel-eslint": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "eslint": "^7.24.0",
     "express": "^4.17.1",
     "knex": "^0.95.4",
     "prettier": "^2.2.1",
     "shelljs": "^0.8.4",
     "sqlite3": "^5.0.2",
     "uuid": "^8.3.2"
+  },
+  "plugins": [
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/plugin-proposal-class-properties": "^7.13.0"
   }
 }
